@@ -20,6 +20,7 @@ class DevConfig(Config):
     ENV = 'dev'
     DEBUG = True
     DEBUG_TB_INTERCEPT_REDIRECTS = False
+    SQLALCHEMY_ECHO = True
 
     CACHE_TYPE = 'null'
     ASSETS_DEBUG = True

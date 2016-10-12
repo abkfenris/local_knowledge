@@ -9,6 +9,7 @@ from flask import Flask
 from webassets.loaders import PythonLoader as PythonAssetsLoader
 
 from local_knowledge.controllers.main import main
+from local_knowledge.controllers.api01 import api as api01
 from local_knowledge import assets
 from local_knowledge.models import db
 from local_knowledge.tasks import celery
@@ -59,5 +60,6 @@ def create_app(object_name):
 
     # register our blueprints
     app.register_blueprint(main)
+    app.register_blueprint(api01, url_prefix='/api/0.1')
 
     return app
