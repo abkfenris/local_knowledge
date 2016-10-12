@@ -49,6 +49,8 @@ class Node(db.Model):
     osm_id = db.Column(db.BigInteger())
     geom = db.Column(Geometry('POINT', 4326))
     json = db.Column(postgresql.JSONB)
+    created = db.Column(db.DateTime())
+    updated = db.Column(db.DateTime())
 
 
 class Way(db.Model):
@@ -57,3 +59,5 @@ class Way(db.Model):
     geom = db.Column(Geometry('LINESTRING', 4326))
     name = db.Column(db.String())
     json = db.Column(postgresql.JSONB)
+    created = db.Column(db.DateTime())
+    updated = db.Column(db.DateTime())
