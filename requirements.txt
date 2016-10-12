@@ -6,7 +6,8 @@ Flask-Cache==0.13.1
 Flask-DebugToolbar==0.10.0
 Flask-Login==0.2.11
 Flask-SQLAlchemy==2.0
-geoalchemy
+geoalchemy2==0.3.0
+psycopg2
 Flask-Script==2.0.5
 Flask-WTF==0.11
 Flask-Migrate==2.0.0
@@ -25,3 +26,4 @@ mccabe==0.3
 flake8==2.4.0
 
 gunicorn
+ipython

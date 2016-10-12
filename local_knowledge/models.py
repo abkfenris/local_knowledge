@@ -1,6 +1,8 @@
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from geoalchemy2 import Geometry
+from sqlalchemy.dialects import postgresql
 
 db = SQLAlchemy()
 
@@ -40,3 +42,18 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return '<User %r>' % self.username
+
+
+class Node(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    osm_id = db.Column(db.BigInteger())
+    geom = db.Column(Geometry('POINT', 4326))
+    json = db.Column(postgresql.JSONB)
+
+
+class Way(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    osm_id = db.Column(db.BigInteger())
+    geom = db.Column(Geometry('LINESTRING', 4326))
+    name = db.Column(db.String())
+    json = db.Column(postgresql.JSONB)
