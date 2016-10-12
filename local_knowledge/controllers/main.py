@@ -4,6 +4,7 @@ from flask.ext.login import login_user, logout_user, login_required
 from local_knowledge.extensions import cache
 from local_knowledge.forms import LoginForm
 from local_knowledge.models import User
+from local_knowledge.settings import Config
 
 main = Blueprint('main', __name__)
 
@@ -11,7 +12,9 @@ main = Blueprint('main', __name__)
 @main.route('/')
 @cache.cached(timeout=1000)
 def home():
-    return render_template('index.html')
+    return render_template('index.html', 
+                           MAPBOX_TOKEN=Config.MAPBOX_TOKEN,
+                           MAPBOX_USER=Config.MAPBOX_USER)
 
 
 @main.route("/login", methods=["GET", "POST"])

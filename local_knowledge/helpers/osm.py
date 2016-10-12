@@ -37,7 +37,7 @@ def map_data_to_nodes_ways(map_data):
         linestring = []
         for node_id in way['nd']:
             node = nodes[node_id]
-            linestring.append((node['lat'], node['lon']))
+            linestring.append((node['lon'], node['lat']))
 
         ways[way_id]['linestring'] = linestring
         ways[way_id]['timestamp'] = way['timestamp'].isoformat()
