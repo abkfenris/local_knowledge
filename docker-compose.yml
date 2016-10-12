@@ -5,7 +5,7 @@ services:
     restart: "always"
     image: "mdillon/postgis:9.6"
     volumes:
-      - ./docker-data/postgres:/var/lib/postgres/data
+      - ./docker-data/postgres:/var/lib/postgresql/data
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
     env_file:
@@ -31,7 +31,7 @@ services:
     #command: "gunicorn --log-level debug -w 2 -b :8000 wsgi:app" production
     command: "python /usr/src/app/manage.py runserver -d -r -p 8000 --host=0.0.0.0" # auto reload testing
     volumes:
-      - ./local_knowledge:/usr/src/app/local_knowledge
+      - .:/usr/src/app #./local_knowledge:/usr/src/app/local_knowledge
     env_file:
       - ./common.env
 

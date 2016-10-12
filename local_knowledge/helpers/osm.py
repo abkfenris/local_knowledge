@@ -1,4 +1,6 @@
 """ Helper functions for OpenStreetMap"""
+from datetime import datetime
+
 import osmapi
 
 from local_knowledge.models import Node, Way, db
@@ -38,6 +40,7 @@ def map_data_to_nodes_ways(map_data):
             linestring.append((node['lat'], node['lon']))
 
         ways[way_id]['linestring'] = linestring
+        ways[way_id]['timestamp'] = way['timestamp'].isoformat()
 
     return nodes, ways
 
@@ -58,12 +61,17 @@ def update_db_nodes(nodes):
     """ Updates node information in db """
     for node_id in nodes:
         node = nodes[node_id]
-        
+
         db_node = Node.query.filter_by(osm_id=node['id']).first()
+
+        # If node does not already exist, lets create it
         if not db_node:
             db_node = Node(osm_id=node['id'],
-                           geom=node_to_wkt(node),
-                           json=node)
+                           created=datetime.utcnow())
+        
+        db_node.updated = datetime.utcnow()
+        db_node.geom = node_to_wkt(node)
+        db_node.json = node
         db.session.add(db_node)
     db.session.commit()
 
@@ -74,10 +82,15 @@ def update_db_ways(ways):
         way = ways[way_id]
 
         db_way = Way.query.filter_by(osm_id=way['id']).first()
+
+        # If way does not already exist, lets create it
         if not db_way:
             db_way = Way(osm_id=way['id'],
-                         geom=way_to_wkt(way),
-                         json=way)
+                         created=datetime.utcnow())
+
+        db_way.updated = datetime.utcnow()
+        db_way.geom = way_to_wkt(way)
+        db_way.json=way
         if way['tag'].get('name', False):
             db_way.name = way['tag']['name']
 
