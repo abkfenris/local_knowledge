@@ -10,6 +10,11 @@ While organizations may wish to share their data publicly, not everything can or
 
 
 +---------------+-------------------+
+| Test status   | |travis.ci|       |
++---------------+-------------------+
+| Test Coverage | |coveralls|       |
+|               | |codecov|         |
++---------------+-------------------+
 | Code Health   | |landscape|       |
 |               | |quantifiedcode|  |
 |               |                   |
@@ -35,3 +40,12 @@ While organizations may wish to share their data publicly, not everything can or
 .. |requires.io| image:: https://requires.io/github/abkfenris/local_knowledge/requirements.svg?branch=master
    :target: https://requires.io/github/abkfenris/local_knowledge/requirements/?branch=master
    :alt: Requirements Status
+.. |travis.ci| image:: https://travis-ci.org/abkfenris/local_knowledge.svg?branch=master
+   :target: https://travis-ci.org/abkfenris/local_knowledge
+   :alt: Travis.ci Test Status 
+.. |coveralls| image:: https://coveralls.io/repos/github/abkfenris/local_knowledge/badge.svg?branch=master
+   :target: https://coveralls.io/github/abkfenris/local_knowledge?branch=master
+   :alt: Coveralls code coverage
+.. |codecov| image:: https://codecov.io/gh/abkfenris/local_knowledge/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/abkfenris/local_knowledge
+   :alt: Codecov code coverage
