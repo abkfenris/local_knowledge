@@ -1,8 +1,8 @@
 language: python
 python:
     - "3.5"
-addons:
-    postgresql: "9.5"
+services:
+  - postgresql
 env:
     - SQLALCHEMY_DATABASE_URI=postgresql://postgres@localhost:5432/postgres
 before_script:
