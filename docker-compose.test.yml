@@ -2,7 +2,7 @@ version: '2'
 
 services:
   postgis:
-    image: "mdillon/postgis:9.6"
+    image: "mdillon/postgis:9.4"
     env_file:
       - ./common.env
   
