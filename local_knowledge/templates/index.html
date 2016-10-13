@@ -53,12 +53,13 @@
     </div>
     <script>
         L.mapbox.accessToken = '{{ MAPBOX_TOKEN }}';
+
         var map = L.mapbox.map('map', '{{ MAPBOX_USER }}');
+
         var ways = L.mapbox.featureLayer().addTo(map);
         ways.loadURL('{{ url_for("api.ways") }}');
         ways.on('ready', function() {
-            console.log('ready');
-            //map.fitBounds(ways.getBounds());
+            map.fitBounds(ways.getBounds());
         });
         
         

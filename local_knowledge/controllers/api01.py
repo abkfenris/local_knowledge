@@ -14,12 +14,15 @@ def index():
 def nodes():
     """ Returns a GeoJSON Feature collection with all nodes """
     results = db.session.query(Node.id, Node.json, Node.geom.ST_AsGeoJSON().cast(JSON).label('geom')).all()
-    fc = {"type": "FeatureCollection",
-          "features": [dict(res.geom, 
-                            properties={'id': res.id, 
-                                        'osm_data': {k:res.json[k] for k in res.json if k!='nd'}
-                                        }) for res in results]}
-    return jsonify(fc)
+    
+    features = {"type": "FeatureCollection",
+                "features": [{'type': 'Feature',
+                              'geometry': res.geom,
+                              'properties': {'id': res.id,
+                                             'osm_data': {k:res.json[k] for k in res.json if k != 'nd'}
+                }} for res in results]}
+
+    return jsonify(features)
 
 
 @api.route('/ways')
@@ -28,10 +31,12 @@ def ways():
     results = db.session.query(Way.id, Way.name, Way.json, Way.geom.ST_AsGeoJSON().cast(JSON).label('geom')).all()
     fc = {
         'type': 'FeatureCollection',
-        'features': [dict(res.geom, 
-                          properties={'id': res.id, 
-                                      'name': res.name, 
-                                      'osm_data': {k:res.json[k] for k in res.json if k!='linestring' and k!='nd'} 
-                                      }) for res in results]
+        'features': [{'type': 'Feature',
+                      'geometry': res.geom,
+                      'properties' :{'id': res.id,
+                                     'name': res.name,
+                                      'osm_data': {k: res.json[k] for k in res.json
+                                                   if k != 'linestring' and k != 'nd'} 
+        }} for res in results]
     }
     return jsonify(fc)
