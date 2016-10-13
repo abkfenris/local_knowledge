@@ -7,7 +7,8 @@ class Config(object):
     SECRET_KEY = 'secret key'
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
     CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
-    BOUNDING_BOX = [44.5963, -70.8620, 44.6111, -70.9626]  # min_lat, max_lon, max_lat, min_lon
+    #BOUNDING_BOX = [44.5963, -70.8620, 44.6111, -70.9626]  # min_lat, max_lon, max_lat, min_lon
+    BOUNDING_BOX = [44.0, -70.1, 44.9, -71.3]  # min_lat, max_lon, max_lat, min_lon
     MAPBOX_TOKEN = os.environ.get('MAPBOX_TOKEN')
     MAPBOX_USER = os.environ.get('MAPBOX_USER')
 
@@ -26,6 +27,7 @@ class DevConfig(Config):
 
     CACHE_TYPE = 'null'
     ASSETS_DEBUG = True
+    
 
 
 class TestConfig(Config):
@@ -38,3 +40,4 @@ class TestConfig(Config):
 
     CACHE_TYPE = 'null'
     WTF_CSRF_ENABLED = False
+    BOUNDING_BOX = [44.5963, -70.8620, 44.6111, -70.9626]  # min_lat, max_lon, max_lat, min_lon
