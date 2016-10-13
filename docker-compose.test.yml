@@ -17,7 +17,6 @@ services:
     build: .
     links:
       - postgis:postgis
-    #command: "gunicorn --log-level debug -w 2 -b :8000 wsgi:app" production
     command: "python /usr/src/app/manage.py runserver -d -r -p 8000 --host=0.0.0.0" # auto reload testing
     volumes:
       - .:/usr/src/app #./local_knowledge:/usr/src/app/local_knowledge
