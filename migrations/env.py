@@ -27,6 +27,7 @@ target_metadata = current_app.extensions['migrate'].db.metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
+# from https://gist.github.com/utek/6163250
 def exclude_tables_from_config(config_):
     tables_ = config_.get("tables", None)
     if tables_ is not None:

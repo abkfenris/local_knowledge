@@ -3,7 +3,7 @@ Local Knowledge
 
     You can't get there from here.
   
-    - Old Mainers
+    -Old Mainers
 
 Local Knowledge is designed for organizations that are wishing to combine their data with OpenStreetMap.
 While organizations may wish to share their data publicly, not everything can or should go straight into OpenStreetMap. 
