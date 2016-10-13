@@ -21,7 +21,10 @@ clean:
 	python manage.py clean
 
 lint:
-	flake8 --exclude=env .
+	flake8 --exclude=env,migrations .
 
 test:
-	py.test tests
+	docker-compose --project-name testing -f docker-compose.test.yml up -d
+	docker-compose --project-name testing -f docker-compose.test.yml run wait
+	docker-compose --project-name testing -f docker-compose.test.yml run web py.test tests
+	docker-compose --project-name testing -f docker-compose.test.yml down

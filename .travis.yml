@@ -1,0 +1,14 @@
+language: python
+python:
+    - "3.5"
+addons:
+    postgresql: "9.5"
+env:
+    - SQLALCHEMY_DATABASE_URI=postgresql://postgres@localhost:5432/postgres
+before_script:
+    - psql -U postgres -c 'CREATE DATABASE testing;'
+    - psql -U postgres -c "CREATE EXTENSION postgis;" testing
+cache: pip
+install:
+    - pip install -r requirements.txt
+script: py.test tests

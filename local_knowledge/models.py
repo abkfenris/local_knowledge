@@ -46,7 +46,7 @@ class User(db.Model, UserMixin):
 
 class Node(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    osm_id = db.Column(db.BigInteger())
+    osm_id = db.Column(db.BigInteger(), index=True, unique=True)
     geom = db.Column(Geometry('POINT', 4326))
     json = db.Column(postgresql.JSONB)
     created = db.Column(db.DateTime())
@@ -55,7 +55,7 @@ class Node(db.Model):
 
 class Way(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    osm_id = db.Column(db.BigInteger())
+    osm_id = db.Column(db.BigInteger(), index=True, unique=True)
     geom = db.Column(Geometry('LINESTRING', 4326))
     name = db.Column(db.String())
     json = db.Column(postgresql.JSONB)
