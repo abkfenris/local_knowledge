@@ -11,4 +11,9 @@ before_script:
 cache: pip
 install:
     - pip install -r requirements.txt
-script: py.test tests
+    - pip install coveralls codeclimate-test-reporter codecov
+script: py.test --cov local_knowledge --cov-report term-missing tests
+after_success:
+    - coveralls
+    - codeclimate-test-reporter
+    - codecov

@@ -22,9 +22,9 @@ def map_data_to_nodes_ways(map_data):
     # make initial dictionaries
     for obj in map_data:
         if obj['type'] == 'node':
-            nodes[obj['data']['id']] = obj['data']
+            nodes[obj['data']['id']] = obj['data'].copy()
         elif obj['type'] == 'way':
-            ways[obj['data']['id']] = obj['data']
+            ways[obj['data']['id']] = obj['data'].copy()
 
     # clean up nodes
     for node_id in nodes:

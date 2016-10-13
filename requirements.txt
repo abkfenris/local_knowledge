@@ -7,7 +7,7 @@ Flask-DebugToolbar==0.10.0
 Flask-Login==0.2.11
 Flask-SQLAlchemy==2.0
 geoalchemy2==0.3.0
-psycopg2
+psycopg2==2.6.2
 Flask-Script==2.0.5
 Flask-WTF==0.11
 Flask-Migrate==2.0.0
@@ -17,13 +17,14 @@ itsdangerous==0.24
 cssmin==0.2.0
 jsmin==2.1.1
 Celery[redis]==3.1.24
-osmapi
+osmapi==0.6.2
 
 # Testing
 pytest==3.0.3
 pytest-cov==2.4.0
 mccabe==0.3
 flake8==2.4.0
+vcrpy==1.10.3
 
-gunicorn
+gunicorn==19.6.0
 ipython
