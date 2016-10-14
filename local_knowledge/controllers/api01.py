@@ -1,13 +1,10 @@
+""" Version 0.1 of api returning GeoJSON """
 from flask import Blueprint, jsonify
 from sqlalchemy import JSON
 
 from local_knowledge.models import db, Way, Node
 
 api = Blueprint('api', __name__)
-
-@api.route('/')
-def index():
-    return "Hello World"
 
 
 @api.route('/nodes')

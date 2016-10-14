@@ -25,6 +25,7 @@ pytest-cov==2.4.0
 mccabe==0.3
 flake8==2.4.0
 vcrpy==1.10.3
+geojson
 
 gunicorn==19.6.0
 ipython

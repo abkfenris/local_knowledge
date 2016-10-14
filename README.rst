@@ -20,6 +20,8 @@ While organizations may wish to share their data publicly, not everything can or
 |               |                   |
 |               | |scrutinizer|     |
 |               | |codeclimate|     |
+|               |                   |
+|               | |codebeat|        |
 +---------------+-------------------+
 | Requirements  | |requires.io|     |
 +---------------+-------------------+
@@ -49,3 +51,6 @@ While organizations may wish to share their data publicly, not everything can or
 .. |codecov| image:: https://codecov.io/gh/abkfenris/local_knowledge/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/abkfenris/local_knowledge
    :alt: Codecov code coverage
+.. |codebeat| image:: https://codebeat.co/badges/7281c7fc-35ca-487f-9a89-154fa978e80e
+   :target: https://codebeat.co/projects/github-com-abkfenris-local_knowledge
+   :alt: Codebeat
